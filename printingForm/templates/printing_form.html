@@ -5,9 +5,63 @@
   <head>
     <meta charset="utf-8" />
     <title>Formulaire</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'printingForm.css' %}" />
+    <link rel="stylesheet" href="{% static 'template.css' %}" />
   </head>
   <body>
-    <h1>Printing form</h1>
+    <header>
+      <img src="" alt="logo GeePs" />
+      <span>Geeps Poster Printing Center</span>
+      <select>
+        <option>Langues</option>
+      </select>
+      <a href="#">Admin</a>
+    </header>
+    <from action="" method="post">
+      <input type="text" required name="nom" placeholder="Nom" />
+      <input type="text" required name="prenom" placeholder="Prénom" />
+      <input type="text" required name="email" placeholder="Email" />
+      <input
+        type="number"
+        required
+        name="numero"
+        placeholder="01.69.85.xx.xx"
+      />
+      <input type="text" required name="bureau" placeholder="Bureau" />
+      <select>
+        <option value="geeps">GeePs</option>
+        <option value="geeps">Bréguet</option>
+      </select>
+      <label for="fileToUpload">
+        (*) Téléchargez votre fichier (PDF|PPT|PPTX)
+        <input type="file" name="fileToUpload" id="fileToUpload" />
+      </label>
+
+      <select>
+        <option value="volvo">Volvo</option>
+      </select>
+      <select>
+        <option value="A0">A0 (118,9 x 84,1 cm)</option>
+        <option value="A0+">A0+ surdimensionné (129 x 91 cm)</option>
+        <option value="autre">Autre</option>
+      </select>
+      <input />
+      <span>cm x</span>
+      <input />
+      <span>cm</span>
+      <textarea type="text" placeholder="Commentaire"></textarea>
+      <input type="submit" />
+      <span>(*) Champs obligatoires</span>
+    </from>
+    <footer>
+      <p>Direction : Claude Marchand</p>
+      <p>GeePs</p>
+      <span>@ Copyright 2019 - GeePs</span>
+      <p>CNRS UMR8507 - CentralSupélec</p>
+      <span>webmaster@geeps.centralesupelec.fr</span>
+      <p>Université Paris-Sud - Sorbonne Universités</p>
+      <span>Ce site est réalisé en Django</span>
+      <p>91190 Gif sur Yvette</p>
+    </footer>
   </body>
 </html>
