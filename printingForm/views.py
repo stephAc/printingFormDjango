@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def printing_form(request):
+  return render(request,'printing_form.html')
