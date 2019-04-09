@@ -5,8 +5,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Formulaire</title>
-    <link rel="stylesheet" href="{% static 'printingForm.css' %}" />
-    <link rel="stylesheet" href="{% static 'template.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/printingForm.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/template.css' %}" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -21,39 +21,22 @@
     />
   </head>
   <body>
-    <header class="navBar flex headerFlex">
+    <header class="navBar">
       <img src="" alt="logo GeePs" />
-      <span>Geeps Poster Printing Center</span>
-
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+      <h1>Geeps Poster Printing Center</h1>
+      <div class="subNavFlex">
+        <div class="drop">
+          <button id="dropDownBtn" class="dropbtn">
+            Langues
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div id="dropItem" class="drop-content">
+            <button class="btnLang">Français</button>
+            <button class="btnLang">Anglais</button>
+          </div>
         </div>
+        <a style="margin-left: 10px;" class="adminLink" href="#">Admin</a>
       </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">
-          Langues
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <button class="btnLang">Français</button>
-          <button class="btnLang">Anglais</button>
-        </div>
-      </div>
-      <a class="adminLink" href="#">Admin</a>
     </header>
 
     <form>
