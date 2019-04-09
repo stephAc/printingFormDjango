@@ -7,61 +7,151 @@
     <title>Formulaire</title>
     <link rel="stylesheet" href="{% static 'printingForm.css' %}" />
     <link rel="stylesheet" href="{% static 'template.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <header>
+    <header class="navBar flex headerFlex">
       <img src="" alt="logo GeePs" />
       <span>Geeps Poster Printing Center</span>
-      <select>
-        <option>Langues</option>
-      </select>
-      <a href="#">Admin</a>
-    </header>
-    <from action="" method="post">
-      <input type="text" required name="nom" placeholder="Nom" />
-      <input type="text" required name="prenom" placeholder="Prénom" />
-      <input type="text" required name="email" placeholder="Email" />
-      <input
-        type="number"
-        required
-        name="numero"
-        placeholder="01.69.85.xx.xx"
-      />
-      <input type="text" required name="bureau" placeholder="Bureau" />
-      <select>
-        <option value="geeps">GeePs</option>
-        <option value="geeps">Bréguet</option>
-      </select>
-      <label for="fileToUpload">
-        (*) Téléchargez votre fichier (PDF|PPT|PPTX)
-        <input type="file" name="fileToUpload" id="fileToUpload" />
-      </label>
 
-      <select>
-        <option value="volvo">Volvo</option>
-      </select>
-      <select>
-        <option value="A0">A0 (118,9 x 84,1 cm)</option>
-        <option value="A0+">A0+ surdimensionné (129 x 91 cm)</option>
-        <option value="autre">Autre</option>
-      </select>
-      <input />
-      <span>cm x</span>
-      <input />
-      <span>cm</span>
-      <textarea type="text" placeholder="Commentaire"></textarea>
-      <input type="submit" />
-      <span>(*) Champs obligatoires</span>
-    </from>
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          Langues
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <button class="btnLang">Français</button>
+          <button class="btnLang">Anglais</button>
+        </div>
+      </div>
+      <a class="adminLink" href="#">Admin</a>
+    </header>
+
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="NomForm">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nomForm"
+            placeholder="Nom"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="prenomForm">Prénom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="prenomForm"
+            placeholder="Prénom"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="emailForm">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="emailForm"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="numForm">Numéro</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numForm"
+            placeholder="01.69.85.xx.xx"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="batimentForm">Choisissez votre bâtiment</label>
+          <select id="batimentForm" class="custom-select" required>
+            <option value="geeps">GeePs</option>
+            <option value="breguet">Bréguet</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="bureauForm">Bureau</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bureauForm"
+            placeholder="Bureau"
+          />
+        </div>
+        <div class="form-group col-md-12">
+          <select class="form-control">
+            <option value="A0">A0 (118,9 x 84,1 cm)</option>
+            <option value="A0+">A0+ surdimensionné (129 x 91 cm)</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group col-md-12">
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="fichierForm"
+              required
+            />
+            <label class="custom-file-label" for="fichierForm"
+              >(*) Téléchargez votre fichier (PDF|PPT|PPTX)</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>(*) Champs obligatoires</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+
     <footer>
-      <p>Direction : Claude Marchand</p>
-      <p>GeePs</p>
-      <span>@ Copyright 2019 - GeePs</span>
-      <p>CNRS UMR8507 - CentralSupélec</p>
-      <span>webmaster@geeps.centralesupelec.fr</span>
-      <p>Université Paris-Sud - Sorbonne Universités</p>
-      <span>Ce site est réalisé en Django</span>
-      <p>91190 Gif sur Yvette</p>
+      <div class="foot">
+        <div>
+          <p>Direction : Claude Marchand</p>
+          <p>GeePs</p>
+          <p>CNRS UMR8507 - CentralSupélec</p>
+          <p>webmaster@geeps.centralesupelec.fr</p>
+          <p>91190 Gif sur Yvette</p>
+        </div>
+        <div>
+          <p>@ Copyright 2019 - GeePs</p>
+          <p>Université Paris-Sud - Sorbonne Universités</p>
+          <p>Ce site est réalisé en Django</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
