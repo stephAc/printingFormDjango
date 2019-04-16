@@ -42,7 +42,7 @@
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="NomForm">Nom</label>
+          <label for="NomForm">(*) Nom</label>
           <input
             type="text"
             class="form-control"
@@ -51,7 +51,7 @@
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="prenomForm">Prénom</label>
+          <label for="prenomForm">(*) Prénom</label>
           <input
             type="text"
             class="form-control"
@@ -60,7 +60,7 @@
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="emailForm">Email</label>
+          <label for="emailForm">(*) Email</label>
           <input
             type="text"
             class="form-control"
@@ -69,7 +69,7 @@
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="numForm">Numéro</label>
+          <label for="numForm">(*) Numéro</label>
           <input
             type="text"
             class="form-control"
@@ -78,14 +78,14 @@
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="batimentForm">Choisissez votre bâtiment</label>
+          <label for="batimentForm">(*) Choisissez votre bâtiment</label>
           <select id="batimentForm" class="custom-select" required>
             <option value="geeps">GeePs</option>
             <option value="breguet">Bréguet</option>
           </select>
         </div>
         <div class="form-group col-md-6">
-          <label for="bureauForm">Bureau</label>
+          <label for="bureauForm">(*) Bureau</label>
           <input
             type="text"
             class="form-control"
@@ -117,7 +117,15 @@
       <div class="form-group">
         <label>(*) Champs obligatoires</label>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <div style="display: flex;">
+        <button
+          type="submit"
+          style="margin-right: auto; margin-left: auto"
+          class="btn btn-primary"
+        >
+          Envoyer
+        </button>
+      </div>
     </form>
 
     <footer>

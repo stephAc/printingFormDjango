@@ -27,7 +27,7 @@
 
 form {
   width: 80%;
-  margin: 20px auto 0px auto;
+  margin: 20px auto 20px auto;
   box-shadow: 0px 0px 3px black;
   padding: 10px;
 }
@@ -83,9 +83,4 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-footer {
-  margin-top: 20px;
-  background: linear-gradient(-90deg, #84cf6a, #16c0b0);
 }
