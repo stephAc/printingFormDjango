@@ -5,7 +5,11 @@ from .models import Format
 
 class BuildingAdmin(admin.ModelAdmin):
   list_display = ('building',)
+class OfficeAdmin(admin.ModelAdmin):
+  list_display = ('officeName',)
+class FormatAdmin(admin.ModelAdmin):
+  list_display = ('format',)
 
 admin.site.register(Building, BuildingAdmin)
-admin.site.register(Office)
-admin.site.register(Format)
+admin.site.register(Office, OfficeAdmin)
+admin.site.register(Format, FormatAdmin)
