@@ -7,4 +7,10 @@ def printing_form(request):
   buildings = Building.objects.all()
   office = Office.objects.all()
   formats = Format.objects.all()
+
+  if request.method == 'POST':
+    if form.
+
+
+
   return render(request,'printing_form.html', {'buildings':buildings,'formats':formats})

@@ -22,7 +22,7 @@
   </head>
   <body>
     <header class="navBar">
-      <img src="" alt="logo GeePs" />
+      <img src="" alt="logo" />
       <h1>Geeps Poster Printing Center</h1>
       <div class="subNavFlex">
         <div class="drop">
@@ -35,11 +35,11 @@
             <button class="btnLang">Anglais</button>
           </div>
         </div>
-        <a style="margin-left: 10px;" class="adminLink" href="#">Admin</a>
+        <a style="margin-left: 10px;" class="adminLink" href="./admin">Admin</a>
       </div>
     </header>
 
-    <form>
+    <form method="post" action="/" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="NomForm">(*) Nom</label>
@@ -80,8 +80,9 @@
         <div class="form-group col-md-6">
           <label for="batimentForm">(*) Choisissez votre bâtiment</label>
           <select id="batimentForm" class="custom-select" required>
-            <option value="geeps">GeePs</option>
-            <option value="breguet">Bréguet</option>
+            {% for building in buildings %}
+            <option>{{ building.building }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-6">
@@ -95,9 +96,9 @@
         </div>
         <div class="form-group col-md-12">
           <select class="form-control">
-            <option value="A0">A0 (118,9 x 84,1 cm)</option>
-            <option value="A0+">A0+ surdimensionné (129 x 91 cm)</option>
-            <option value="autre">Autre</option>
+            {% for format in formats %}
+            <option>{{ format.format }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-12">
@@ -127,12 +128,6 @@
         </button>
       </div>
     </form>
-
-    <p>
-      building : {% for building in buildings %}
-      <p>{{ building.building }}</p>
-      {% endfor %}
-    </p>
 
     <footer>
       <div class="foot">
