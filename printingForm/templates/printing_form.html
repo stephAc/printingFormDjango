@@ -40,10 +40,12 @@
     </header>
 
     <form method="post" action="/" enctype="multipart/form-data">
+      {% csrf_token %}
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="NomForm">(*) Nom</label>
           <input
+            name="nom"
             type="text"
             class="form-control"
             id="nomForm"
@@ -53,6 +55,7 @@
         <div class="form-group col-md-6">
           <label for="prenomForm">(*) Prénom</label>
           <input
+            name="prenom"
             type="text"
             class="form-control"
             id="prenomForm"
@@ -62,6 +65,7 @@
         <div class="form-group col-md-6">
           <label for="emailForm">(*) Email</label>
           <input
+            name="email"
             type="text"
             class="form-control"
             id="emailForm"
@@ -71,6 +75,7 @@
         <div class="form-group col-md-6">
           <label for="numForm">(*) Numéro</label>
           <input
+            name="numero"
             type="text"
             class="form-control"
             id="numForm"
@@ -79,35 +84,44 @@
         </div>
         <div class="form-group col-md-6">
           <label for="batimentForm">(*) Choisissez votre bâtiment</label>
-          <select id="batimentForm" class="custom-select" required>
+          <select
+            id="batimentForm"
+            class="custom-select"
+            name="building"
+            required
+          >
             {% for building in buildings %}
-            <option>{{ building.building }}</option>
+            <option value="{{ building.pk }}">{{ building.building }}</option>
             {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-6">
-          <label for="bureauForm">(*) Bureau</label>
-          <input
-            type="text"
-            class="form-control"
+          <label for="bureauForm">(*) Choisissez votre bureau</label>
+          <select
             id="bureauForm"
-            placeholder="Bureau"
-          />
+            class="custom-select"
+            name="officeName"
+            required
+          >
+            {% for office in offices %}
+            <option value="{{ office.pk }}">{{ office.officeName }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="form-group col-md-12">
-          <select class="form-control">
+          <select class="form-control" name="format">
             {% for format in formats %}
-            <option>{{ format.format }}</option>
+            <option value="{{ format.pk }}">{{ format.format }}</option>
             {% endfor %}
           </select>
         </div>
         <div class="form-group col-md-12">
           <div class="custom-file">
             <input
+              name="file"
               type="file"
               class="custom-file-input"
               id="fichierForm"
-              required
             />
             <label class="custom-file-label" for="fichierForm"
               >(*) Téléchargez votre fichier (PDF|PPT|PPTX)</label
