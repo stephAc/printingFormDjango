@@ -109,7 +109,12 @@
           </select>
         </div>
         <div class="form-group col-md-12">
-          <select class="form-control" name="format">
+          <select
+            class="form-control"
+            name="format"
+            onchange="formatChange(event)"
+            id="formatSelect"
+          >
             {% for format in formats %}
             <option value="{{ format.pk }}">{{ format.format }}</option>
             {% endfor %}
@@ -159,5 +164,13 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function formatChange(event) {
+        // var formatSelect = document.getElementById('formatSelect');
+        // var format = formatSelect.options[formatSelect.selectedIndex].value;
+        console.log(event.target.value);
+      }
+    </script>
   </body>
 </html>
