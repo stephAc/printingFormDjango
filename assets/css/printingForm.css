@@ -1,13 +1,29 @@
 .navBar {
-  display: flex;
-  justify-content: space-around;
-  height: 50px;
-  line-height: 50px;
+  height: 70px;
+  line-height: 70px;
   padding-right: 10px;
   padding-left: 15px;
   margin-bottom: 20px;
   background: linear-gradient(-90deg, #84cf6a, #16c0b0);
   box-shadow: 0px 1px 10px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-right: 25px;
+}
+
+h1 {
+  font-weight: bold !important;
+  text-align: center;
+}
+
+.hide {
+  display: none;
 }
 
 .subNavFlex {
@@ -27,6 +43,7 @@
 
 form {
   width: 80%;
+  min-width: 430px;
   margin: 20px auto 20px auto;
   box-shadow: 0px 0px 3px black;
   padding: 10px;
@@ -51,7 +68,6 @@ form {
   text-align: left;
   border: none;
   width: 100%;
-  height: 50px;
 }
 
 .btnLang:hover {
@@ -79,8 +95,24 @@ form {
 
 .foot {
   width: 80%;
-  margin: 0px auto 0px auto;
+  margin: 10px auto 0px auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  color: white;
+  font-weight: bold;
+}
+
+.incorrectInput {
+  border: 2px solid red !important;
+}
+.correctInput {
+  border: 2px solid green !important;
+}
+
+@media screen and (max-width: 635px) {
+  .foot {
+    justify-content: center;
+  }
 }

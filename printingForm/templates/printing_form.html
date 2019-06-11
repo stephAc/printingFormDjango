@@ -22,10 +22,9 @@
   </head>
   <body>
     <header class="navBar">
-      <img src="" alt="logo" />
-      <h1>Geeps Poster Printing Center</h1>
-      <div class="subNavFlex">
-        <div class="drop">
+      <img src="static/img/img.png" alt="logo" style="width: 130px;" />
+      <div class="subNavFlex right">
+        <div class="drop ">
           <button id="dropDownBtn" class="dropbtn">
             Langues
             <i class="fa fa-caret-down"></i>
@@ -38,6 +37,8 @@
         <a style="margin-left: 10px;" class="adminLink" href="./admin">Admin</a>
       </div>
     </header>
+
+    <h1>Geeps Poster Printing Center</h1>
 
     <form method="post" action="/" enctype="multipart/form-data">
       {% csrf_token %}
@@ -110,15 +111,42 @@
         </div>
         <div class="form-group col-md-12">
           <select
-            class="form-control"
+            class="form-control custom-select"
             name="format"
             onchange="formatChange(event)"
             id="formatSelect"
           >
+            <!-- <option value="choisir format" selected="selected"
+              >Choisir format</option
+            > -->
+            <option value="Selectionner un format" disabled selected
+              >Selectionner un format</option
+            >
             {% for format in formats %}
             <option value="{{ format.pk }}">{{ format.format }}</option>
             {% endfor %}
+            <option value="autre">Autre</option>
           </select>
+        </div>
+        <div id="Largeur" class="form-group col-md-6 hide">
+          <label for="NomForm">(*) Cm x</label>
+          <input
+            name="Largeur"
+            type="text"
+            class="form-control"
+            placeholder="Largeur"
+            id="largeurForm"
+          />
+        </div>
+        <div id="Longueur" class="form-group col-md-6 hide">
+          <label for="prenomForm">(*) Cm</label>
+          <input
+            name="Longueur"
+            type="text"
+            class="form-control"
+            placeholder="Longueur"
+            id="longueurForm"
+          />
         </div>
         <div class="form-group col-md-12">
           <div class="custom-file">
@@ -140,8 +168,9 @@
       <div style="display: flex;">
         <button
           type="submit"
-          style="margin-right: auto; margin-left: auto"
+          style="margin-right: auto; margin-left: auto; padding: 5px 30px;"
           class="btn btn-primary"
+          id="btnForm"
         >
           Envoyer
         </button>
@@ -150,14 +179,15 @@
 
     <footer>
       <div class="foot">
-        <div>
+        <div style="padding: 20px 0;">
           <p>Direction : Claude Marchand</p>
           <p>GeePs</p>
           <p>CNRS UMR8507 - CentralSupélec</p>
           <p>webmaster@geeps.centralesupelec.fr</p>
           <p>91190 Gif sur Yvette</p>
         </div>
-        <div>
+        <div style="padding: 20px 0;">
+          <img src="static/img/img.png" alt="logo" style="width: 130px;" />
           <p>@ Copyright 2019 - GeePs</p>
           <p>Université Paris-Sud - Sorbonne Universités</p>
           <p>Ce site est réalisé en Django</p>
@@ -167,10 +197,16 @@
 
     <script>
       function formatChange(event) {
-        // var formatSelect = document.getElementById('formatSelect');
-        // var format = formatSelect.options[formatSelect.selectedIndex].value;
-        console.log(event.target.value);
+        if (event.target.value === 'autre') {
+          document.getElementById('Longueur').style.display = 'block';
+          document.getElementById('Largeur').style.display = 'block';
+        } else {
+          document.getElementById('Longueur').style.display = 'none';
+          document.getElementById('Largeur').style.display = 'none';
+        }
       }
     </script>
+
+    <script src="{% static 'script/formValidator.js' %}"></script>
   </body>
 </html>
