@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var largeur = document.getElementById('largeurForm');
   var longueur = document.getElementById('longueurForm');
   var fichier = document.getElementById('fichierForm');
+  var fichierDiv = document.getElementById('fileInputDiv');
   var submit = document.getElementById('btnForm');
+  var banner = document.getElementById('banner');
 
   nom.addEventListener('change', function() {
     var nomRegex = new RegExp('^[a-zA-Z]+$');
@@ -49,6 +51,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  longueur.addEventListener('change', function() {
+    var numRegex = new RegExp('^[0-9]*$');
+    if (numRegex.test(longueur.value)) {
+      addClass(longueur, true);
+    } else {
+      addClass(longueur, false);
+    }
+  });
+  largeur.addEventListener('change', function() {
+    var numRegex = new RegExp('^[0-9]*$');
+    if (numRegex.test(largeur.value)) {
+      addClass(largeur, true);
+    } else {
+      addClass(largeur, false);
+    }
+  });
+  fichier.addEventListener('change', function() {
+    if (fichier.files.length === 1) {
+      fileInputDiv.classList.remove('incorrectInputFile');
+      fileInputDiv.classList.add('correctInputFile');
+      var fileName = fichier.value;
+      fileName = fileName.replace('C:\\fakepath\\', '');
+      // console.log(fileName);
+
+      // fichier.childNode
+      //   .nextElementSibling('.custom-file-label')
+      //   .setAttribute('data-content', fileName);
+      // fichier.nextElementSibling('.custom-file-label').text(fileName);
+    }
+  });
+
   function addClass(element, bool) {
     if (bool) {
       element.classList.remove('incorrectInput');
@@ -62,13 +95,17 @@ document.addEventListener('DOMContentLoaded', function() {
   submit.addEventListener('click', function(event) {
     event.preventDefault();
 
-    console.log(format.options[formatSelect.selectedIndex].innerText);
-
     if (
-      (format.options[formatSelect.selectedIndex].innerText =
-        'Select your option')
+      format.options[formatSelect.selectedIndex].innerText ===
+      '(*) Selectionner un format'
     ) {
-      console.log(format.value);
+      format.classList.add('incorrectInput');
+    }
+
+    if (fichier.files.length === 0) {
+      fileInputDiv.classList.add('incorrectInputFile');
+      banner.innerText = 'veuillez remplir tous les champs';
+      banner.classList.add('bannerIncorrect');
     }
 
     console.log('sub');

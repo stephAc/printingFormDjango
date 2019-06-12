@@ -37,7 +37,7 @@
         <a style="margin-left: 10px;" class="adminLink" href="./admin">Admin</a>
       </div>
     </header>
-
+    <div id="banner" class="banner"></div>
     <h1>Geeps Poster Printing Center</h1>
 
     <form method="post" action="/" enctype="multipart/form-data">
@@ -116,11 +116,8 @@
             onchange="formatChange(event)"
             id="formatSelect"
           >
-            <!-- <option value="choisir format" selected="selected"
-              >Choisir format</option
-            > -->
             <option value="Selectionner un format" disabled selected
-              >Selectionner un format</option
+              >(*) Selectionner un format</option
             >
             {% for format in formats %}
             <option value="{{ format.pk }}">{{ format.format }}</option>
@@ -129,9 +126,9 @@
           </select>
         </div>
         <div id="Largeur" class="form-group col-md-6 hide">
-          <label for="NomForm">(*) Cm x</label>
+          <label for="largeurForm">(*) Cm x</label>
           <input
-            name="Largeur"
+            name="largeurInput"
             type="text"
             class="form-control"
             placeholder="Largeur"
@@ -139,16 +136,16 @@
           />
         </div>
         <div id="Longueur" class="form-group col-md-6 hide">
-          <label for="prenomForm">(*) Cm</label>
+          <label for="longueurInput">(*) Cm</label>
           <input
-            name="Longueur"
+            name="longueurInput"
             type="text"
             class="form-control"
             placeholder="Longueur"
             id="longueurForm"
           />
         </div>
-        <div class="form-group col-md-12">
+        <div id="fileInputDiv" class="form-group col-md-12">
           <div class="custom-file">
             <input
               name="file"
