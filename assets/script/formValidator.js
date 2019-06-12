@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  var printingForm = document.getElementById('printingForm');
   var nom = document.getElementById('nomForm');
   var nomValide = false;
   var prenom = document.getElementById('prenomForm');
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   email.addEventListener('change', function() {
-    console.log(email.value);
     var emailRegex = new RegExp('.+@.+.(com|fr|co.uk)$');
     if (emailRegex.test(email.value)) {
       addClass(email, true);
@@ -107,17 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fichier.files.length === 1) {
       fileInputDiv.classList.remove('incorrectInputFile');
       fileInputDiv.classList.add('correctInputFile');
-      // var fileName = fichier.value;
-      // fileName = fileName.replace('C:\\fakepath\\', '');
-      // console.log(fileName);
-
-      // fichier.childNode
-      //   .nextElementSibling('.custom-file-label')
-      //   .setAttribute('data-content', fileName);
-      // fichier.nextElementSibling('.custom-file-label').text(fileName);
+      fichierValide = true;
     } else {
       fileInputDiv.classList.remove('correctInputFile');
       fileInputDiv.classList.add('incorrectInputFile');
+      fichierValide = false;
     }
   });
 
@@ -131,13 +125,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  submit.addEventListener('click', function(event) {
-    event.preventDefault();
+  function checkSelectField() {
     if (bureau.options[bureau.selectedIndex].innerText === '') {
       bureauValide = false;
-      console.log('bureau : ', bureau.options[bureau.selectedIndex].innerText);
     } else {
       bureauValide = true;
+    }
+
+    if (batiment.options[batiment.selectedIndex].innerText === '') {
+      batimentValide = false;
+    } else {
+      batimentValide = true;
     }
 
     if (
@@ -150,15 +148,46 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       format.classList.remove('incorrectInput');
       format.classList.add('correctInput');
-      formatValide = false;
+      formatValide = true;
     }
 
     if (fichier.files.length === 0) {
       fileInputDiv.classList.add('incorrectInputFile');
-      banner.innerText = 'Veuillez remplir tous les champs';
-      banner.classList.add('bannerIncorrect');
+      fichierValide = false;
     }
+  }
 
-    console.log('sub');
+  function showBanner() {
+    banner.innerText = 'Veuillez remplir tous les champs';
+    banner.classList.add('bannerIncorrect');
+  }
+
+  submit.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    checkSelectField();
+
+    if (
+      nomValide &&
+      prenomValide &&
+      emailValide &&
+      numeroValide &&
+      batimentValide &&
+      bureauValide &&
+      fichierValide &&
+      formatValide
+    ) {
+      if (format.options[formatSelect.selectedIndex].innerText === 'Autre') {
+        if (largeurValide && longueurValide) {
+          printingForm.submit();
+        } else {
+          showBanner();
+        }
+      } else {
+        printingForm.submit();
+      }
+    } else {
+      showBanner();
+    }
   });
 });

@@ -40,7 +40,12 @@
     <div id="banner" class="banner"></div>
     <h1>Geeps Poster Printing Center</h1>
 
-    <form method="post" action="/" enctype="multipart/form-data">
+    <form
+      id="printingForm"
+      method="post"
+      action="/"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %}
       <div class="form-row">
         <div class="form-group col-md-6">

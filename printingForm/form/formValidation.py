@@ -8,6 +8,8 @@ class PrintingFormValidator(forms.Form):
   email = forms.EmailField()
   numero = forms.CharField(max_length=50)
   file = forms.FileField(required=False)
+  largeurInput =  forms.CharField(max_length=50, required=False)
+  longueurInput =  forms.CharField(max_length=50, required=False)
   format = forms.ModelChoiceField(queryset=Format.objects.all())
   officeName = forms.ModelChoiceField(queryset=Office.objects.all())
   building = forms.ModelChoiceField(queryset=Building.objects.all())
